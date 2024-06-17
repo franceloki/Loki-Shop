@@ -1,0 +1,323 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000; /* Темный цвет фона */
+    color: #ccc; /* Светлосерый цвет текста */
+    overflow: hidden; /* Запретить прокрутку */
+}
+
+.overlay-image {
+    position: absolute; /* Позиционируем изображение фиксированно */
+    top: 200px;
+    left: 200px;
+    width: 150%; /* Растягиваем изображение на всю ширину экрана */
+    height: 100%; /* Растягиваем изображение на всю высоту экрана */
+    z-index: 1; /* Устанавливаем z-index ниже основного контента */
+    pointer-events: none; /* Изображение не перехватывает события мыши */
+}
+.overlay-image img {
+    border-radius: 10px; /* Закругляем углы изображения */
+    overflow: hidden; /* Обрезаем контент, который выходит за границы */
+    position: relative; /* Устанавливаем позицию как относительную, чтобы абсолютно позиционировать рамку */
+}
+
+.overlay-image img::before {
+    content: ''; /* Добавляем пустой контент для псевдоэлемента */
+    position: absolute; /* Позиционируем абсолютно относительно изображения */
+    top: -5px; /* Смещаем рамку немного вверх, чтобы она не перекрывала изображение */
+    left: -5px; /* Смещаем рамку немного влево, чтобы она не перекрывала изображение */
+    width: calc(100% + 10px); /* Увеличиваем ширину рамки на 10px с каждой стороны */
+    height: calc(100% + 10px); /* Увеличиваем высоту рамки на 10px с каждой стороны */
+    border: 2px solid transparent; /* Устанавливаем начальную прозрачную рамку */
+    border-radius: 10px; /* Радиус закругления углов */
+    animation: snake 4s linear infinite alternate; /* Добавляем анимацию */
+    z-index: -1; /* Устанавливаем ниже изображения */
+}
+
+@keyframes snake {
+    0% {
+        border-color: transparent; /* Начальное состояние - рамка спрятана */
+    }
+    100% {
+        border-color: white; /* Конечное состояние - рамка показана */
+    }
+}
+
+.h1h1 {
+    position: relative; /* Обязательно для использования left */
+    left: -590px; /* Задаем смещение влево на 50 пикселей */
+}
+
+.h2h2 {
+    position: relative; /* Обязательно для использования left */
+    left: -0px; /* Задаем смещение влево на 50 пикселей */
+    top: 45px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Стили для затемнения заднего фона */
+.parallax-container {
+    position: relative;
+    overflow: hidden; /* Скрываем видимые края заднего фона */
+    width: 100%;
+    height: 100vh;
+}
+
+.parallax-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Затемнение заднего фона */
+    z-index: -1;
+}
+
+/* Стили для заднего фона с эффектом параллакса */
+.parallax {
+    position: absolute;
+    top: -85px;
+    left: -20px;
+    width: 120%; /* Немного больше, чем ширина окна браузера */
+    height: 110%; /* Немного больше, чем высота окна браузера */
+    background-image: url('/img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transform: translate(-50%, -50%); /* Центрируем изображение */
+}
+
+/* Стили для курсора с звездочкой */
+.parallax-container::before {
+    position: absolute;
+    top: calc(50% - 10px); /* Положение по вертикали */
+    left: calc(50% - 10px); /* Положение по горизонтали */
+    font-size: 20px; /* Размер курсора */
+    color: #fff; /* Цвет курсора */
+    pointer-events: none; /* Курсор не реагирует на события мыши */
+    z-index: 9999; /* Выводим курсор над всем остальным контентом */
+    transition: transform 0.3s ease-out; /* Плавное изменение размера курсора */
+}
+
+.parallax-container:hover::before {
+    transform: scale(1.5); /* Увеличиваем размер курсора при наведении */
+}
+
+/* Ваши стили для header, main, content, section и footer остаются без изменений */
+header {
+    text-align: center;
+    padding: 50px 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #eee; /* Белый цвет текста */
+}
+
+main {
+    background: #33333300; /* Цвет фона основного контента */
+    padding: 20px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    display: flex;
+    justify-content: center; /* Центрируем контент по горизонтали */
+}
+
+.services {
+    background-color: #e4d5d5;
+    border-radius: 15px; /* Округляем края серого квадрата */
+    padding: 20px;
+}
+/* Обновленные стили для центрирования */
+.services {
+    background-color: #30303081;
+    border-radius: 25px; /* Округляем края серого квадрата */
+    padding: 30px;
+    text-align: center; /* Выравниваем текст по центру */
+}
+
+.services h2 {
+    margin-top: 0; /* Убираем верхний отступ у надписи "Услуги" */
+    margin-bottom: 20px; /* Добавляем нижний отступ перед списком услуг */
+}
+
+.services ul {
+    padding: 0;
+    margin: 0;
+    list-style: none; /* Убираем маркеры у списка услуг */
+}
+.services li {
+    text-align: center; /* Выравниваем текст по центру */
+    width: 300px; /* Задаем ширину элемента списка */
+    margin: 0 auto; /* Центрируем элемент списка по горизонтали */
+    padding: 3px 0; /* Добавляем вертикальный отступ внутри элемента списка */
+}
+
+
+
+
+
+.service-item {
+    height: 1.5em; /* Высота элемента */
+    transition: color 0.5s ease-in-out; /* Плавное переключение цвета */
+    text-align: left; /* Выравниваем текст внутри элементов списка слева */
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #00000000;
+    color: #fff;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 1.5em;
+    color: #eee; /* Белый цвет текста */
+    border-bottom: 2px solid #eee; /* Белая граница */
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+section p, section ul {
+    font-size: 1em;
+    color: #ccc; /* Светлосерый цвет текста */
+}
+
+section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-item {
+    height: 1.5em; /* Высота элемента */
+    transition: color 0.5s ease-in-out; /* Плавное переключение цвета */
+}
+
+.neon {
+    text-shadow: 0 0 2px #e3e6e9, 0 0 10px #d2d6da, 0 0 15px #e7eaec; /* Неоновый эффект */
+}
+
+.gray {
+    color: #ccc; /* Светлосерый цвет текста */
+}
+
+.white {
+    color: #eee; /* Белый цвет текста */
+}
+
+section a {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+section a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+    color: #ccc; /* Светлосерый цвет текста */
+}
+
+.star {
+    position: absolute;
+    pointer-events: none; /* Звездочки не взаимодействуют с мышью */
+    color: #fff; /* Цвет звездочки */
+    font-size: 12px; /* Размер звездочки */
+    animation: twinkle 1s ease-out; /* Анимация звездочки */
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Стили для блока с отзывами */
+.reviews {
+    position: fixed; /* Фиксированное позиционирование */
+    top: 538px; /* Центрируем по вертикали */
+    right: 200px; /* Отступ справа */
+    transform: translateY(-50%); /* Смещаем вверх на 50% высоты элемента */
+    height: 638px;
+    width: 300px; /* Ширина блока с отзывами */
+    background-color: rgb(0, 0, 0); /* Полупрозрачный черный фон */
+    padding: 20px;
+    border-radius: 10px; /* Закругляем углы */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Добавляем тень */
+    z-index: 1000; /* Выводим блок поверх другого контента */
+    color: #eee; /* Цвет текста */
+}
+
+.reviews-tab {
+    position: fixed; /* Фиксированное позиционирование */
+    top: 140px; /* Немного выше центра экрана */
+    font-size: 1.5em;
+    right: 280px; /* Выравниваем по правому краю, рядом с контейнером отзывов */
+    transform: translateY(-50%); /* Смещаем вверх на 50% высоты элемента */
+    background-color: #00000000; /* Черный фон */
+    padding: 10px 20px; /* Отступы вокруг текста */
+    border-radius: 10px 10px 0 0; /* Закругляем углы */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.0); /* Добавляем тень */
+    z-index: 1000; /* Выводим поверх другого контента */
+    color: #eee; /* Цвет текста */
+    cursor: pointer; /* Указатель на курсоре при наведении */
+}
+
+.reviews h2 {
+    margin-top: 0; /* Убираем верхний отступ */
+    text-align: center; /* Выравнивание заголовка по центру */
+}
+
+.review-item {
+    margin-bottom: 20px; /* Отступ между отзывами */
+}
+
+.review-item p {
+    margin: 1; /* Убираем отступы у абзацев */
+    font-size: 1em; /* Размер шрифта отзывов */
+}
+
+.nickname {
+    color: #837c7c; /* Цвет текста ников (нежный оттенок белого) */
+}
+
+.discord-button {
+    position: fixed;
+    bottom: 125px; /* Увеличиваем значение bottom для поднятия кнопки */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 60px;
+    background-color: #7289da;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    z-index: 999;
+}
+
+.discord-button:hover {
+    background-color: #677bc4;
+}
